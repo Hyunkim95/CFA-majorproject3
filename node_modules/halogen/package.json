@@ -1,0 +1,61 @@
+{
+  "name": "halogen",
+  "version": "0.2.0",
+  "description": "A collection of loading spinners with React.js",
+  "main": "Halogen.js",
+  "author": "Yuanyan Cao",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yuanyan/halogen.git"
+  },
+  "dependencies": {
+    "domkit": "0.0.1"
+  },
+  "peerDependencies": {
+    "react": "^0.14.8",
+    "react-dom": "^0.14.8"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-1": "^6.5.0",
+    "babelify": "^7.2.0",
+    "browserify": "^6.3.3",
+    "browserify-shim": "^3.8.0",
+    "chalk": "^0.5.1",
+    "codemirror": "^5.0.0",
+    "del": "^0.1.3",
+    "gulp": "^3.8.10",
+    "gulp-babel": "^6.1.2",
+    "gulp-bump": "^0.1.11",
+    "gulp-connect": "^2.2.0",
+    "gulp-gh-pages": "^0.4.0",
+    "gulp-git": "^0.5.5",
+    "gulp-less": "^1.3.6",
+    "gulp-rename": "^1.2.0",
+    "gulp-streamify": "^0.0.5",
+    "gulp-uglify": "^1.0.1",
+    "gulp-util": "^3.0.1",
+    "merge-stream": "^0.1.6",
+    "vinyl-paths": "^1.0.0",
+    "vinyl-source-stream": "^1.0.0",
+    "watchify": "^2.1.1"
+  },
+  "browserify": {
+    "transform": []
+  },
+  "browserify-shim": {
+    "react": "global:React"
+  },
+  "scripts": {
+    "release": "gulp release"
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "loader",
+    "spinner",
+    "halogen"
+  ]
+}

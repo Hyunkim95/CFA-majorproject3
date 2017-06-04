@@ -1,0 +1,16 @@
+{
+  "name": "domkit",
+  "version": "0.0.1",
+  "description": "Toolkit for DOM",
+  "author": "Yuanyan Cao",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yuanyan/domkit.git"
+  },
+  "keywords": [
+    "dom",
+    "domkit",
+    "toolkit"
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "dbUri": "mongodb://localhost/major_project",
+  "jwtSecret": "a secret phrase!!"
+}
