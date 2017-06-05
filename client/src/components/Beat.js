@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Button, Alert, UncontrolledAlert, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
+import StripeCheckout from 'react-stripe-checkout';
 
 const Beat = ({
+  token,
   temp_error,
-  modal,
   handleClick,
   beats,
   error,
-  toggle
 }) => (
     <div>
       {beats.map((beat,i) =>
@@ -24,20 +24,28 @@ const Beat = ({
           <audio controls>
             <source src={'http://localhost:3000/api/beats/' + beat._id}/>
           </audio>
-          <Button color="primary"
-            onClick={temp_error !== 401 ? toggle : handleClick}
-            >primary</Button>
 
-            <Modal isOpen={modal} toggle={toggle}>
-              <ModalHeader toggle={toggle}>Modal title</ModalHeader>
-              <ModalBody>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </ModalBody>
-              <ModalFooter>
-                <Button color="primary" onClick={toggle}>Do Something</Button>{' '}
-                <Button color="secondary" onClick={toggle}>Cancel</Button>
-              </ModalFooter>
-            </Modal>
+          {temp_error === 401 ?
+            <Button color="primary"
+              onClick={handleClick}
+              >primary</Button>
+
+            :
+
+            <StripeCheckout
+              name={beat.title}
+              description="Big Data Stuff"
+              token={token}
+              stripeKey={process.env.StripeKey}
+              amount={beat.price * 100}
+              reconfigure
+              currency="USD">
+              <Button color="primary" >
+                primary
+              </Button>
+              </StripeCheckout>
+            }
+
         </div>
       )}
     </div>

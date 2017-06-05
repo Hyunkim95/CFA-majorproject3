@@ -16,7 +16,8 @@ class HomePageContainer extends React.Component {
       modal: false
     }
     this.handleClick = this.handleClick.bind(this);
-    this.toggle = this.toggle.bind(this);
+    this.onToken = this.onToken.bind(this);
+    this.purchase = this.purchase.bind(this);
   }
 
   componentDidMount() {
@@ -26,11 +27,17 @@ class HomePageContainer extends React.Component {
     this.getUser()
   }
 
-  toggle() {
-    this.setState({
-      modal: !this.state.modal
+  onToken(token) {
+    fetch('/save-stripe-token', {
+      method: 'POST',
+      body: JSON.stringify(token),
+    }).then(response => {
+      response.json().then(data => {
+        alert(`We are in business, ${data.email}`);
+      });
     });
   }
+
 
   getSongs(){
     console.log('componentDidMount')
@@ -74,6 +81,10 @@ class HomePageContainer extends React.Component {
     }
   }
 
+  purchase(){
+
+  }
+
   render() {
     return (
       <HomePage
@@ -81,8 +92,8 @@ class HomePageContainer extends React.Component {
         error = {this.state.error}
         temp_error = {this.state.temp_error}
         handleClick = {this.handleClick}
-        modal = {this.state.modal}
-        toggle = {this.toggle}
+        token = {this.onToken}
+        purchase = {this.purchase}
       />
     )
   }

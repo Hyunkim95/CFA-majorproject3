@@ -5,9 +5,8 @@ var Loader = require('halogen/ScaleLoader');
 var Spinner = require('react-spinkit');
 
 const HomePage = ({
+  token,
   temp_error,
-  modal,
-  toggle,
   handleClick,
   error,
   beats
@@ -27,8 +26,7 @@ const HomePage = ({
           error = {error}
           temp_error = {temp_error}
           handleClick = {handleClick}
-          modal = {modal}
-          toggle = {toggle}
+          token = {token}
         />
       )
         :
