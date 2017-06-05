@@ -1,7 +1,7 @@
 import React from 'react';
-import { Card, CardTitle, CardText } from 'material-ui/Card';
 import Auth from '../modules/Auth';
 import Beat from '../Refactor/Beat';
+import { Card, CardTitle, CardText } from 'material-ui/Card';
 var axios = require('axios');
 var Loader = require('halogen/ScaleLoader');
 
@@ -36,11 +36,14 @@ class HomePage extends React.Component {
   render() {
     return (
       <Card className="container">
-        <CardTitle title="React Application" subtitle="This is the home page." />
+        <CardTitle
+        title="React Application"
+        subtitle="Admin"
+        />
           {Auth.isUserAuthenticated() ? (
-            <CardText style={{ fontSize: '16px', color: 'green' }}>Welcome! You are logged in.</CardText>
+            <p style={{ fontSize: '16px', color: 'green' }}>Welcome! You are logged in.</p>
           ) : (
-            <CardText style={{ fontSize: '16px', color: 'green' }}>You are not logged in.</CardText>
+            <p style={{ fontSize: '16px', color: 'green' }}>You are not logged in.</p>
           )}
           {this.state.beats ? <Beat beats = {this.state.beats}/> :  <Loader color="#26A65B" size="100px" margin="4px"/>}
       </Card>

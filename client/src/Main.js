@@ -25,7 +25,7 @@ injectTapEventPlugin();
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
     Auth.isUserAuthenticated() ? (
-      <Component {...props}/>
+        <Component {...props}/>
     ) : (
       <Redirect to={{
         pathname: '/',

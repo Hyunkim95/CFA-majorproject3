@@ -1,7 +1,7 @@
 import React from 'react';
 import Auth from '../modules/Auth';
 import Dashboard from '../components/Dashboard.jsx';
-import UploadForm from '../Refactor/UploadForm.jsx';
+import AdminDashboard from '../components/AdminDashboard.jsx'
 
 class DashboardPage extends React.Component {
 
@@ -44,8 +44,12 @@ class DashboardPage extends React.Component {
   render() {
     return (
       <div>
-      <Dashboard secretData={this.state.secretData} user={this.state.user} />
-      <UploadForm />
+        {this.state.user.roles != "Admin" ?
+          <Dashboard secretData={this.state.secretData} user={this.state.user} />
+        : (
+          <AdminDashboard />
+        )
+      }
       </div>
     );
   }
