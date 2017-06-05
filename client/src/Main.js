@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // import routes from './routes.js';
+import 'bootstrap/dist/css/bootstrap.css';
 
 import {
   BrowserRouter as Router,
@@ -12,7 +10,7 @@ import {
   withRouter
 } from 'react-router-dom'
 
-import HomePage from './components/HomePage.jsx';
+import HomePageContainer from './containers/HomePageContainer.jsx';
 import LoginPage from './containers/LoginPage.jsx';
 import LogoutFunction from './containers/LogoutFunction.jsx';
 import SignUpPage from './containers/SignUpPage.jsx';
@@ -20,7 +18,6 @@ import DashboardPage from './containers/DashboardPage.jsx';
 import Auth from './modules/Auth';
 
 // remove tap delay, essential for MaterialUI to work properly
-injectTapEventPlugin();
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
@@ -74,7 +71,6 @@ class Main extends Component {
 
   render() {
     return (
-      <MuiThemeProvider muiTheme={getMuiTheme()}>
         <Router>
           <div>
             <div className="top-bar">
@@ -95,7 +91,7 @@ class Main extends Component {
 
             </div>
 
-            <PropsRoute exact path="/" component={HomePage} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
+            <PropsRoute exact path="/" component={HomePageContainer} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
             <PrivateRoute path="/dashboard" component={DashboardPage}/>
             <LoggedOutRoute path="/login" component={LoginPage} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
             <LoggedOutRoute path="/signup" component={SignUpPage}/>
@@ -103,7 +99,6 @@ class Main extends Component {
           </div>
 
         </Router>
-      </MuiThemeProvider>
     );
   }
 }

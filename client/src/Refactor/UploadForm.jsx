@@ -1,7 +1,7 @@
 import Dropzone from 'react-dropzone';
 import React, { Component } from 'react';
 var request = require('superagent')
-var apiBaseUrl = "http://localhost:3000/admin/"
+var apiBaseUrl = "http://localhost:3000/api/"
 
 class UploadScreen extends Component{
   constructor(props){

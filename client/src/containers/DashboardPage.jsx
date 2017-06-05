@@ -22,7 +22,7 @@ class DashboardPage extends React.Component {
    */
   componentDidMount() {
     const xhr = new XMLHttpRequest();
-    xhr.open('get', '/api/dashboard');
+    xhr.open('get', '/api/user/dashboard');
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     // set the authorization HTTP header
     xhr.setRequestHeader('Authorization', `bearer ${Auth.getToken()}`);
@@ -46,10 +46,8 @@ class DashboardPage extends React.Component {
       <div>
         {this.state.user.roles != "Admin" ?
           <Dashboard secretData={this.state.secretData} user={this.state.user} />
-        : (
-          <AdminDashboard />
-        )
-      }
+          :
+          <AdminDashboard />  }
       </div>
     );
   }

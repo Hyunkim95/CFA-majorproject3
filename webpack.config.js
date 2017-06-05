@@ -24,7 +24,9 @@ module.exports = {
         presets: ["react", "es2015"],
         plugins: ["transform-es2015-destructuring", "transform-object-rest-spread"]
       }
-    }],
+    },
+      { test: /\.css$/, loader: "style-loader!css-loader?importLoaders=1" }
+    ],
   },
 
   // start Webpack in a watch mode, so Webpack will rebuild the bundle on changes
