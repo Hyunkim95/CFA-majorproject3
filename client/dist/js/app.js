@@ -15234,7 +15234,7 @@ var HomePage = function HomePage(_ref) {
       null,
       _react2.default.createElement(
         _reactstrap.Col,
-        { md: '8' },
+        { md: '7' },
         beat._id == null ? null : _react2.default.createElement(_MediaPlayer2.default, {
           beat: beat,
           nextBeat: nextBeat,
@@ -15246,7 +15246,7 @@ var HomePage = function HomePage(_ref) {
       ),
       _react2.default.createElement(
         _reactstrap.Col,
-        { md: '4' },
+        { md: '5' },
         beats ? _react2.default.createElement(_Beat2.default, {
           current_beat: current_beat,
           beats: beats,

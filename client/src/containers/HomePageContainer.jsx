@@ -105,7 +105,7 @@ class HomePageContainer extends React.Component {
     }
   }
 
-  chooseBeat(beat){
+  chooseBeat(beat) {
     this.setState({
       beat: beat
     })

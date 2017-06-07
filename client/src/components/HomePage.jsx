@@ -34,7 +34,7 @@ const HomePage = ({
         </Col>
       </Row>
       <Row>
-        <Col md="8">
+        <Col md="7">
           {beat._id == null ? null :
             <MediaPlayer
               beat = {beat}
@@ -46,7 +46,7 @@ const HomePage = ({
             />
           }
         </Col>
-        <Col md="4">
+        <Col md="5">
           {beats ?
           (
             <Beat
