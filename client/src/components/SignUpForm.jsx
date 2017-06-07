@@ -15,6 +15,7 @@ const SignUpForm = ({
       {errors.summary && <p className="error-message">{errors.summary}</p>}
 
       <div className="field-line">
+        NAME
         <input
           type="text"
           name="name"
@@ -25,6 +26,7 @@ const SignUpForm = ({
       </div>
 
       <div className="field-line">
+        EMAIL
         <input
           type="text"
           name="email"
@@ -35,6 +37,7 @@ const SignUpForm = ({
       </div>
 
       <div className="field-line">
+        PASSWORD
         <input
           type="password"
           name="password"

@@ -13,6 +13,14 @@ const BeatSchema = new Schema({
   file: {
     type: Buffer,
     contentType: String
+  },
+  purchaser: {
+    type: String,
+    default: 'no one'
+  },
+  purchased: {
+    type: Boolean,
+    default: false
   }
 })
 

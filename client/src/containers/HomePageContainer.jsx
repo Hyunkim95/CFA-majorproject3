@@ -9,37 +9,26 @@ class HomePageContainer extends React.Component {
   constructor(props){
     super(props);
     this.state={
+      current_beat: null,
+      clicked: false,
       beats: false,
+      beat: '',
       temp_error: '',
       error: false,
       user: {},
-      modal: false
     }
     this.handleClick = this.handleClick.bind(this);
-    this.onToken = this.onToken.bind(this);
-    this.purchase = this.purchase.bind(this);
+    this.chooseBeat = this.chooseBeat.bind(this);
   }
 
   componentDidMount() {
     // update authenticated state on logout
     this.props.toggleAuthenticateStatus()
-    this.getSongs()
+    this.getBeats()
     this.getUser()
   }
 
-  onToken(token) {
-    fetch('/save-stripe-token', {
-      method: 'POST',
-      body: JSON.stringify(token),
-    }).then(response => {
-      response.json().then(data => {
-        alert(`We are in business, ${data.email}`);
-      });
-    });
-  }
-
-
-  getSongs(){
+  getBeats(){
     console.log('componentDidMount')
     const URL = 'http://localhost:3000/api/beats'
     axios.get(URL)
@@ -81,19 +70,59 @@ class HomePageContainer extends React.Component {
     }
   }
 
-  purchase(){
+  nextBeat(beat){
+    var index = this.state.beats.indexOf(beat)
 
+    if(index+1 == this.state.beats.length){
+      console.log('222')
+      index = 0
+    }else{
+      console.log('333')
+      index ++
+    }
+    this.setState({
+      beat: this.state.beats[index]
+    })
+    console.log(index)
+  }
+
+  previousBeat(beat){
+    var index = this.state.beats.indexOf(beat)
+    if(index-1 < 0){
+      index = this.state.beats.length-1
+    }else{
+      index = index - 1
+    }
+    this.setState({
+      beat: this.state.beats[index]
+    })
+    console.log(index)
+  }
+
+  current_beat(beat){
+    return{
+      background: this.state.beat == beat ? "red" : "white"
+    }
+  }
+
+  chooseBeat(beat){
+    this.setState({
+      beat: beat
+    })
   }
 
   render() {
     return (
       <HomePage
         beats = {this.state.beats}
+        beat = {this.state.beat}
+        current_beat = {this.current_beat.bind(this)}
         error = {this.state.error}
         temp_error = {this.state.temp_error}
         handleClick = {this.handleClick}
-        token = {this.onToken}
-        purchase = {this.purchase}
+        previousBeat = {this.previousBeat.bind(this)}
+        nextBeat = {this.nextBeat.bind(this)}
+        chooseBeat = {this.chooseBeat}
       />
     )
   }
