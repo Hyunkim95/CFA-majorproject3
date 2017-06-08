@@ -80,7 +80,6 @@ class UploadScreen extends Component{
         console.log("res", res);
         alert("File uploading completed")
       })
-      window.location.href = "/";
     }
     else{
       alert("Please upload some files first")
