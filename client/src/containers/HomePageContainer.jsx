@@ -35,7 +35,7 @@ class HomePageContainer extends React.Component {
 
   getBeats(){
     console.log('componentDidMount')
-    const URL = 'http://localhost:3000/api/beats'
+    const URL = 'https://beat-profile.herokuapp.com//api/beats'
     axios.get(URL)
       .then((response) => { //need to escape the context another option is to use bind
         this.setState({ beats: response.data })
