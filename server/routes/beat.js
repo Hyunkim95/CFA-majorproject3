@@ -69,7 +69,7 @@ router.post('/beat', function(req, res, next) {
           console.log('Upload successful!');
           return;
         });
-        res.send("Successful")
+        res.status(200).send("GOOD JOB")
       });
     }
   });
