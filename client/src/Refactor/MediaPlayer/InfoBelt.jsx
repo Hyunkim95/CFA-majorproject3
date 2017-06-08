@@ -1,4 +1,5 @@
 import React from 'react';
+import FullScreenIcon from './FullScreenIcon.jsx'
 
 class InfoBelt extends React.Component {
 
@@ -32,6 +33,24 @@ class InfoBelt extends React.Component {
             flexFlow: "row wrap"
         }
     }
+
+    getLiStyles2() {
+        return {
+          listStyle: "none",
+          flex: "1 0 auto",
+          textAlign: "center",
+          color: "#eee",
+          textTransform: "uppercase",
+          fontSize: "8px",
+          letterSpacing: "1px",
+          padding: "12px 0px 8px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexFlow: "row wrap"
+        }
+    }
+
     getIconStyles() {
         return {
             height: 18
@@ -49,16 +68,42 @@ class InfoBelt extends React.Component {
     render() {
         return (
             <div style={this.getStyles()}>
-                <li  style={this.getLiStyles()}>
-                    <div onClick = {()=>{this.props.previousBeat(this.props.beat)}} style={this.getLiStyles()}>
+                <li
+                  style={this.getLiStyles()}
+                  onClick = {()=>{this.props.previousBeat(this.props.beat)}}
+                  >
+                    <div  style={this.getLiStyles()}>
                         <span style={this.getTitleStyles()}>&#8249; Prev</span>
                     </div>
                 </li>
-                <li  style={this.getLiStyles()}>
-                    <div onClick = {()=>{this.props.nextBeat(this.props.beat)}} style={this.getLiStyles()}>
+                <li
+                  style={this.getLiStyles()}
+                  onClick = {()=>{this.props.nextBeat(this.props.beat)}}
+                  >
+                    <div style={this.getLiStyles()}>
                         <span style={this.getTitleStyles()}>Next &#8250;</span>
                     </div>
                 </li>
+                <li
+                  style={this.getLiStyles()}
+                    onClick={this.props.playerWidth == 360 ? this.props.enlargePlayer : this.props.shrinkPlayer}
+                  >
+                  <div style={this.getLiStyles2()}>
+                      <FullScreenIcon
+                          style={this.getIconStyles()}
+                          theme={this.props.theme}>
+                      </FullScreenIcon>
+                      {this.props.playerWidth == 360 ?
+                        (
+                          <span style={this.getTitleStyles()}>Enlarge</span>
+                        )
+                        :
+                        (
+                          <span style={this.getTitleStyles()}>Shrink</span>
+                        )
+                      }
+                  </div>
+              </li>
             </div>
         )
     }

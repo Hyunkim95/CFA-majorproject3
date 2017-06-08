@@ -3,7 +3,8 @@ import React from 'react';
 class BeatInfoOverlay extends React.Component {
     getStyles() {
         var isPlaying = this.props.isPlaying,
-            tone = "#111111"
+            tone = "#111111",
+            hover = this.props.hover
         return {
             width: "100%",
             height: "auto",
@@ -18,7 +19,7 @@ class BeatInfoOverlay extends React.Component {
             color: "#fff",
             transition: "all ease 0.5s",
             textShadow: "2px 2px 2px rgba(0,0,0,0.5)",
-            transform: isPlaying ? "translateY(0%)" : "translateY(100%)"
+            transform: hover || isPlaying ? "translateY(0%)" : "translateY(100%)"
         }
     }
 
@@ -44,7 +45,7 @@ class BeatInfoOverlay extends React.Component {
                 <span style={this.getNowPlayingStyles()}>{nowPlaying}</span>
                 <h3 style={{margin: "10px 0px", fontSize: "1.8em"}}>{this.props.beat_title}</h3>
                 <p style={{margin: "5px 0px"}}>{this.props.artist}</p>
-                <p style={{margin: "5px 0px"}}>{this.props.beat_price}</p>
+                <p style={{margin: "5px 0px"}}>${this.props.beat_price}</p>
             </div>
         )
     }

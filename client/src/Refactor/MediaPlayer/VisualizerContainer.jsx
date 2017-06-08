@@ -12,7 +12,7 @@ class VisualizerContainer extends React.Component {
         return {
             top: 0,
             left: 0,
-            width: "100%",
+            width: width,
             height: height,
             position: "absolute",
             zIndex: 99,

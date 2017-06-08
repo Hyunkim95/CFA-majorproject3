@@ -22,13 +22,13 @@ const Beat = ({
           null
         )
       }
-      <Table hover>
-        <thead>
+      <Table hover >
+        <thead className="text-center">
           <th>Title</th>
           <th>Price</th>
           <th>Purchase</th>
         </thead>
-        <tbody>
+        <tbody className="text-center">
       {beats.map((beat, i) =>
         <tr style={current_beat(beat)} onClick={()=>{chooseBeat(beat)}}>
           <td>{beat.title}</td>

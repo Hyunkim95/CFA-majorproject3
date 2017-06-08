@@ -1,12 +1,15 @@
 import React from 'react';
 import Auth from '../modules/Auth';
 import Beat from '../components/Beat';
+import SearchInput, {createFilter} from 'react-search-input';
 import { Container, Row, Col } from 'reactstrap';
 import MediaPlayer from '../Refactor/MediaPlayer/MediaPlayer.jsx'
 var Loader = require('halogen/ScaleLoader');
 var Spinner = require('react-spinkit');
 
 const HomePage = ({
+  filtered_beats,
+  searchUpdated,
   current_beat,
   nextBeat,
   previousBeat,
@@ -34,7 +37,7 @@ const HomePage = ({
         </Col>
       </Row>
       <Row>
-        <Col md="7">
+        <Col auto>
           {beat._id == null ? null :
             <MediaPlayer
               beat = {beat}
@@ -46,17 +49,21 @@ const HomePage = ({
             />
           }
         </Col>
-        <Col md="5">
+        <Col auto>
           {beats ?
           (
-            <Beat
-              current_beat = {current_beat}
-              beats = {beats}
-              error = {error}
-              temp_error = {temp_error}
-              handleClick = {handleClick}
-              chooseBeat = {chooseBeat}
-            />
+            <div>
+                <SearchInput style={{width: "100%"}} className="search-input" onChange={searchUpdated} />
+                <br/>
+                <Beat
+                  current_beat = {current_beat}
+                  beats = {filtered_beats}
+                  error = {error}
+                  temp_error = {temp_error}
+                  handleClick = {handleClick}
+                  chooseBeat = {chooseBeat}
+                />
+            </div>
           )
             :
           (

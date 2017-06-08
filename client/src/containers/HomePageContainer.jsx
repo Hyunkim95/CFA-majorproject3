@@ -2,15 +2,19 @@ import React from 'react';
 import Auth from '../modules/Auth';
 import HomePage from '../components/HomePage.jsx';
 import { Button } from 'reactstrap';
+import {createFilter} from 'react-search-input';
 var axios = require('axios');
 
+const KEYS_TO_FILTERS = ['title', 'price', 'genre']
 
 class HomePageContainer extends React.Component {
   constructor(props){
     super(props);
     this.state={
       current_beat: null,
+      searchTerm: '',
       clicked: false,
+      filteredBeats: [],
       beats: false,
       beat: '',
       temp_error: '',
@@ -34,11 +38,19 @@ class HomePageContainer extends React.Component {
     axios.get(URL)
       .then((response) => { //need to escape the context another option is to use bind
         this.setState({ beats: response.data })
+        this.filterit()
         // console.log(this.state.beats)
       })
       .catch(function(error){
         console.log(error)
       });
+  }
+
+  filterit(){
+    var beats = this.state.beats
+    console.log(beats)
+    const filteredBeats = beats.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS))
+    this.setState({filteredBeats: filteredBeats})
   }
 
   getUser() {
@@ -111,10 +123,19 @@ class HomePageContainer extends React.Component {
     })
   }
 
+    searchUpdated (term) {
+    this.setState({searchTerm: term})
+    console.log(term)
+  }
+
   render() {
+    const Filtered = this.state.filteredBeats.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS))
+
     return (
       <HomePage
+        filtered_beats = {Filtered}
         beats = {this.state.beats}
+        searchUpdated = {this.searchUpdated.bind(this)}
         beat = {this.state.beat}
         current_beat = {this.current_beat.bind(this)}
         error = {this.state.error}

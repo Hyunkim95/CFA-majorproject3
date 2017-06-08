@@ -8,14 +8,15 @@ class AudioButtons extends React.Component {
   }
 
   getStyles() {
-    var isPlaying = this.props.isPlaying
+    var isPlaying = this.props.isPlaying,
+        hover = this.props.hover
 
     return {
-        background: isPlaying ? ("#111") : null,
+        background: hover || isPlaying ? ("#111") : null,
         color: "#fff",
         height: 60,
         width: 60,
-        marginBottom: isPlaying ? 10 : -10,
+        marginBottom: hover || isPlaying ? 10 : -10,
         borderRadius: "50%",
         alignSelf: "flex-end",
         display: "flex",
@@ -28,7 +29,11 @@ class AudioButtons extends React.Component {
 
   render(){
     return(
-      <div style={this.getStyles()}>
+      <div
+        style={this.getStyles()}
+        onMouseEnter={this.props.handleMouseEnter}
+        onMouseLeave={this.props.handleMouseLeave}
+        >
         {!this.props.isPlaying ?
         (
           <div onClick={this.props.play}>
