@@ -45,7 +45,7 @@ router.post('/beat', function(req, res, next) {
 
 
     if (err) {
-      res.status(400).send('Error parsing form', err);
+      res.sendStatus(400);
       return;
     }
 
@@ -53,11 +53,11 @@ router.post('/beat', function(req, res, next) {
       var infoJSON = file[key]
       fs.readFile(infoJSON.path, function(err, data) {
         if (err) {
-          res.status(400).send('Error parsing form', err);
+          res.sendStatus(400);
           return;
         }
         if (data.length === 0) {
-          res.status(400).send('No file provided');
+          res.sendStatus(400);
           return;
         }
         console.log(data.length)
