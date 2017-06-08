@@ -1,0 +1,29 @@
+
+
+.sizing{
+  width: 40%;
+  display: inline-block;
+}
+
+/*.container {
+    margin: 0 auto;
+    text-align: none;
+    width: 700px;
+}*/
+.input-fields{
+  text-align: none !important;
+  width: 40%;
+}
+
+body{
+  color: #51B2C3;
+  /*text-align: left;*/
+}
+
+.roundedbut{
+    color: #51B2C3 !important;
+    background-image: none !important;
+    border-radius: 22.5px !important;
+    background-color: transparent !important;
+    border-color: #51B2C3 !important;
+}

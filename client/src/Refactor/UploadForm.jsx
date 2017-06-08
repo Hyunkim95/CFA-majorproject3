@@ -7,15 +7,19 @@ var apiBaseUrl = "http://localhost:3000/api/";
 
 
 class UploadScreen extends Component{
-  constructor(props){
-    super(props);
+  constructor(props, context){
+    super(props, context);
     this.state={
-      name: '',
-      price: '',
+      beat: {
+        title: '',
+        price: ''
+      },
       filesToBeSent:[],
       filesPreview:[],
       printcount: 2
     }
+
+    this.changeBeat.bind(this);
   }
 
   onDrop(acceptedFiles, rejectedFiles){
@@ -46,18 +50,29 @@ class UploadScreen extends Component{
     }, false);
   }
 
-  handleClick(event){
-    // console.log("handleClick", event);
+  changeBeat(event) {
+    const field = event.target.name;
+    var beat = this.state.beat;
+    beat[field] = event.target.value;
 
-    var self = this;
+    this.setState({
+      beat
+    });
+
+    // console.log(this.state.beat)
+  }
+
+  onClick(event){
+    const name = this.state.beat.name
+    const price = this.state.beat.price
+
     if(this.state.filesToBeSent.length > 0){
       var filesArray = this.state.filesToBeSent;
       console.log(filesArray)
       var req = request.post(apiBaseUrl + 'beat');
-        req.field('title', this.nameInput.value)
-        req.field('price', this.priceInput.value)
-      req.attach(filesArray[0][0].name, filesArray[0][0])
-      this.progress()
+        req.field('title', this.state.beat.title)
+        req.field('price', this.state.beat.price)
+        req.attach(filesArray[0][0].name, filesArray[0][0])
       req.end(function(err,res){
         if(err){
           console.log("error occured")
@@ -65,6 +80,7 @@ class UploadScreen extends Component{
         console.log("res", res);
         alert("File uploading completed")
       })
+      window.location.href = "/";
     }
     else{
       alert("Please upload some files first")
@@ -73,14 +89,14 @@ class UploadScreen extends Component{
 
   render(){
     return(
-      <Form>
+      <div>
         <FormGroup>
           <Label>Title</Label>
-          <Input type="title" placeholder="Beat Title" value={this.state.name}/>
+          <Input type="title" name="title" placeholder="Beat Title" onChange={(event) => this.changeBeat(event)} value={this.state.name}/>
         </FormGroup>
         <FormGroup>
           <Label>Price</Label>
-          <Input type="price" placeholder="Beat Price" value={this.state.price} />
+          <Input type="price" name="price" placeholder="Beat Price" onChange={(event) => this.changeBeat(event)} value={this.state.price} />
         </FormGroup>
         <Row>
           <Col auto>
@@ -96,8 +112,8 @@ class UploadScreen extends Component{
           </Col>
         </Row>
         <br/>
-        <Button onClick={(event) => this.handleClick(event)}>Upload</Button>
-      </Form>
+        <Button onClick={(event) => this.onClick(event)}type="submit">Upload</Button>
+      </div>
     )
   }
 }

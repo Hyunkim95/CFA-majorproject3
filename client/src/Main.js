@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 // import routes from './routes.js';
+import style from './Main.css'
+import { Button } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
 import {
@@ -73,22 +75,29 @@ class Main extends Component {
     return (
         <Router>
           <div>
-            <div className="top-bar">
+            <div className="top-bar eden">
               <div className="top-bar-left">
-                <Link to="/">React App</Link>
+                <Link to="/">jaekwxn</Link>
               </div>
               {this.state.authenticated ? (
                 <div className="top-bar-right">
-                  <Link to="/dashboard">Dashboard</Link>
-                  <Link to="/logout">Log out</Link>
+                  <Link to="/dashboard">
+                    <Button className ="roundedbut" outline color="primary">Dashboard</Button>
+                  </Link>
+                  <Link to="/logout">
+                    <Button className ="roundedbut" outline color="primary">Log Out</Button>
+                  </Link>
                 </div>
               ) : (
                 <div className="top-bar-right">
-                  <Link to="/login">Log in</Link>
-                  <Link to="/signup">Sign up</Link>
+                  <Link to="/login">
+                    <Button className ="roundedbut" outline color="primary">Login</Button>
+                  </Link>
+                  <Link to="/signup">
+                    <Button className ="roundedbut" outline color="primary">Sign Up</Button>
+                  </Link>
                 </div>
               )}
-
             </div>
 
             <PropsRoute exact path="/" component={HomePageContainer} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />

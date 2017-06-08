@@ -7,7 +7,7 @@ class ScrubberBar extends React.Component {
             height: this.props.layoutConfig.scrubberBar.height,
             position: "absolute",
             bottom: 0, left: 0,
-            background: "black",
+            background: "linear-gradient(to right, rgba(73,164,182,1) 0%, rgba(77,173,195,1) 12%, rgba(34,87,95,1) 56%, rgba(34,87,95,1) 100%)",
             transition: "all ease 0.3s"
         }
     }
