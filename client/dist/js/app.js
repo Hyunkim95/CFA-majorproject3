@@ -13476,7 +13476,7 @@ var PurchasedBeats = function PurchasedBeats(_ref) {
           _react2.default.createElement(
             'audio',
             null,
-            _react2.default.createElement('source', { src: 'https://beat-profile.herokuapp.com//api/beats/' + beat._id })
+            _react2.default.createElement('source', { src: 'https://beat-profile.herokuapp.com/api/beats/' + beat._id })
           ),
           _react2.default.createElement(
             _reactstrap.Button,
@@ -13527,7 +13527,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var request = __webpack_require__(285);
-var apiBaseUrl = "https://beat-profile.herokuapp.com//api/";
+var apiBaseUrl = "https://beat-profile.herokuapp.com/api/";
 
 var UploadScreen = function (_Component) {
   _inherits(UploadScreen, _Component);
@@ -14303,7 +14303,7 @@ var DashboardPage = function (_React$Component) {
 
       console.log('componentDidMount');
       var USERID = this.state.user._id;
-      var URL = 'https://beat-profile.herokuapp.com//api/beats/user/';
+      var URL = 'https://beat-profile.herokuapp.com/api/beats/user/';
       axios.get(URL + USERID + '/').then(function (response) {
         //need to escape the context another option is to use bind
         _this3.setState({ personal_beats: response.data });
@@ -14420,7 +14420,7 @@ var HomePageContainer = function (_React$Component) {
       var _this2 = this;
 
       console.log('componentDidMount');
-      var URL = 'https://beat-profile.herokuapp.com//api/beats';
+      var URL = 'https://beat-profile.herokuapp.com/api/beats';
       axios.get(URL).then(function (response) {
         //need to escape the context another option is to use bind
         _this2.setState({ beats: response.data });
@@ -34688,7 +34688,7 @@ var AudioElement = function (_React$Component) {
     }, {
         key: "render",
         value: function render() {
-            return _react2.default.createElement("audio", { style: this.getStyles(), id: this.props.beat_id, src: "https://beat-profile.herokuapp.com//api/beats/" + this.props.beat_id });
+            return _react2.default.createElement("audio", { style: this.getStyles(), id: this.props.beat_id, src: "https://beat-profile.herokuapp.com/api/beats/" + this.props.beat_id });
         }
     }]);
 
@@ -36168,7 +36168,7 @@ var Sale = function (_React$Component) {
   }, {
     key: 'purchase',
     value: function purchase() {
-      var URL = "https://beat-profile.herokuapp.com//api/beats/";
+      var URL = "https://beat-profile.herokuapp.com/api/beats/";
       var beat_id = this.props.beat._id;
       var purchaser_id = this.state.user._id;
 

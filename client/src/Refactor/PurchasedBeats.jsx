@@ -14,7 +14,7 @@ const PurchasedBeats = ({
             <CardTitle>{beat.title}</CardTitle>
             <CardSubtitle>Paid {beat.price}</CardSubtitle>
             <audio>
-              <source src={'https://beat-profile.herokuapp.com//api/beats/' + beat._id}/>
+              <source src={'https://beat-profile.herokuapp.com/api/beats/' + beat._id}/>
             </audio>
             <Button>Button</Button>
           </CardBlock>

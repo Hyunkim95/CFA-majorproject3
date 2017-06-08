@@ -3,7 +3,7 @@ import UploadForm from './UploadForm.css'
 import React, { Component } from 'react';
 import { Button, Row, Col, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 var request = require('superagent');
-var apiBaseUrl = "https://beat-profile.herokuapp.com//api/";
+var apiBaseUrl = "https://beat-profile.herokuapp.com/api/";
 
 
 class UploadScreen extends Component{
