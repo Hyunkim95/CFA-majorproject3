@@ -10,7 +10,7 @@ class VisualizerContainer extends React.Component {
             height = this.props.playerWidth;
 
         return {
-            top: 0,
+            top: -1,
             left: 0,
             width: width,
             height: height,

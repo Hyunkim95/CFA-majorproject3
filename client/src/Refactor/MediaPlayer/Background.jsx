@@ -13,7 +13,7 @@ class Background extends React.Component {
         }
     }
     render() {
-        var link = "https://www.thefanatics.com/corp/uploaded_images/54219_Shinjuku-Tokyo-300x300.jpg",
+        var link = "http://i.imgur.com/cjnbSUC.png",
             artist = ""
         return (
             <div style={this.getStyles()}>

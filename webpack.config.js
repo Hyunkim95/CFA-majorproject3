@@ -25,7 +25,11 @@ module.exports = {
         plugins: ["transform-es2015-destructuring", "transform-object-rest-spread"]
       }
     },
-      { test: /\.css$/, loader: "style-loader!css-loader?importLoaders=1" }
+      { test: /\.css$/, loader: "style-loader!css-loader?importLoaders=1" },
+      {
+          test: /\.svg$/,
+          loader: 'svg-inline-loader'
+      }
     ],
   },
 

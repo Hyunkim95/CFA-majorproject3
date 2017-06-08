@@ -1,5 +1,6 @@
 import React from 'react';
 import Auth from '../modules/Auth';
+var FontAwesome = require('react-fontawesome');
 import { Button, Alert, UncontrolledAlert, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 import StripeCheckout from 'react-stripe-checkout';
 var axios = require('axios');
@@ -68,7 +69,9 @@ class Sale extends React.Component {
         {this.props.temp_error === 401 ?
           <div
             onClick={this.props.handleClick}
-            >primary</div>
+            >
+              <FontAwesome name='rocket' />
+            </div>
 
           :
 
@@ -80,7 +83,8 @@ class Sale extends React.Component {
             amount={this.props.beat.price * 100}
             currency="USD">
             <div>
-              primary</div>
+              <FontAwesome name='shopping-cart' />
+            </div>
             </StripeCheckout>
           }
         {/* <button onClick={this.purchase}>POST IT</button> */}

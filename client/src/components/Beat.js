@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import style from './Beat.css'
 import { UncontrolledAlert, Table } from 'reactstrap';
 import Sale from './Sale.jsx'
 
@@ -10,7 +11,7 @@ const Beat = ({
   beats,
   error
 }) => (
-    <div>
+    <div class="input-fields">
       {error ?
         (
           <UncontrolledAlert color="danger">
@@ -22,13 +23,13 @@ const Beat = ({
           null
         )
       }
-      <Table hover >
-        <thead className="text-center">
+      <Table className="borderless" hover >
+        <thead className="text-center table-head">
           <th>Title</th>
           <th>Price</th>
           <th>Purchase</th>
         </thead>
-        <tbody className="text-center">
+        <tbody className="text-center table-body">
       {beats.map((beat, i) =>
         <tr style={current_beat(beat)} onClick={()=>{chooseBeat(beat)}}>
           <td>{beat.title}</td>

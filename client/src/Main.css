@@ -1,0 +1,27 @@
+
+.top-bar-left a{
+  color: #51B2C3;
+  font-size: 1em;
+}
+
+.top-bar-left a:hover{
+  color: #51B2C3;
+  text-decoration: none;
+}
+
+.top-bar-right a{
+  color: #51B2C3;
+}
+
+.top-bar-right a:hover{
+  color: #51B2C3;
+  text-decoration: none;
+}
+
+.roundedbut{
+    color: #51B2C3 !important;
+    background-image: none !important;
+    border-radius: 22.5px !important;
+    background-color: transparent !important;
+    border-color: #51B2C3 !important;
+}
