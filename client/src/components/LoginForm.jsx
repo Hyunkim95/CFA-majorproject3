@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import style from './SignUpForm.css'
+import { Button, Form, FormGroup, Label, Container, Input, FormText } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 const LoginForm = ({
@@ -10,40 +12,29 @@ const LoginForm = ({
   user,
   toggleAuthenticateStatus
 }) => (
-  <div className="container">
-    <form action="/" onSubmit={onSubmit}>
-      <h2 className="card-heading">Login</h2>
-
+  <Container class="input-fields">
+    <Form action="/" onSubmit={onSubmit}>
+    <h2>Log In</h2>
       {successMessage && <p className="success-message">{successMessage}</p>}
       {errors.summary && <p className="error-message">{errors.summary}</p>}
-
-      <div className="field-line">
-        <input
-          type="text"
-          name="email"
-          onChange={onChange}
-          value={user.email}
-        />
-        <p>{errors.email}</p>
-      </div>
-
-      <div className="field-line">
-        <input
-          type="password"
-          name="password"
-          onChange={onChange}
-          value={user.password}
-        />
-        <p>{errors.password}</p>
-      </div>
-
-      <div className="button-line">
-        <input type="submit" value="Log in"/>
-      </div>
-
-      <p>Don't have an account? </p><Link to={'/signup'}>Create one</Link>
-    </form>
-  </div>
+        <FormGroup>
+          <Label >Email</Label>
+          <Input className="input-field" type="email" name="email" onChange={onChange} value={user.email}/>
+          <p>{errors.email}</p>
+        </FormGroup>
+        <FormGroup>
+          <Label >Password</Label>
+          <Input className="input-field" type="password" name="password" onChange={onChange} value={user.password}/>
+          <p>{errors.password}</p>
+        </FormGroup>
+        <Button className ="roundedbut" outline color="primary">Login</Button>
+    </Form>
+    <br/>
+    <p>Already have an account?</p>
+    <Link to={'/signup'}>
+      <Button className ="roundedbut" outline color="primary">Sign Up</Button>
+    </Link>
+  </Container>
 );
 
 LoginForm.propTypes = {

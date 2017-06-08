@@ -8,7 +8,7 @@ class MediaPlayerControls extends React.Component {
 
   getStyles() {
     return {
-        background: "red",
+        background: "#222222",
         color: "#fff",
         height: 40,
         display: "flex",
@@ -22,7 +22,7 @@ class MediaPlayerControls extends React.Component {
 getScrubTimeStyles() {
     return {
         fontSize: "0.8em",
-        color: "black"
+        color: "white"
     }
 }
 

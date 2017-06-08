@@ -8,7 +8,7 @@ class AudioElement extends React.Component {
     }
 
     getStyles(){
-      return {display: "none"}
+      // return {display: "none"}
     }
 
     render() {

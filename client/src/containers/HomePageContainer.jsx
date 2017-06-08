@@ -1,5 +1,6 @@
 import React from 'react';
 import Auth from '../modules/Auth';
+import Style from './HomePageContainer.css'
 import HomePage from '../components/HomePage.jsx';
 import { Button } from 'reactstrap';
 import {createFilter} from 'react-search-input';
@@ -113,7 +114,7 @@ class HomePageContainer extends React.Component {
 
   current_beat(beat){
     return{
-      background: this.state.beat == beat ? "red" : "white"
+      background: this.state.beat == beat ? "#404040" : "#282828"
     }
   }
 

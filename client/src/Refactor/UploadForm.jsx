@@ -1,16 +1,25 @@
 import Dropzone from 'react-dropzone';
+import UploadForm from './UploadForm.css'
 import React, { Component } from 'react';
-var request = require('superagent')
-var apiBaseUrl = "http://localhost:3000/api/"
+import { Button, Row, Col, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+var request = require('superagent');
+var apiBaseUrl = "http://localhost:3000/api/";
+
 
 class UploadScreen extends Component{
-  constructor(props){
-    super(props);
+  constructor(props, context){
+    super(props, context);
     this.state={
+      beat: {
+        title: '',
+        price: ''
+      },
       filesToBeSent:[],
       filesPreview:[],
       printcount: 2
     }
+
+    this.changeBeat.bind(this);
   }
 
   onDrop(acceptedFiles, rejectedFiles){
@@ -31,17 +40,39 @@ class UploadScreen extends Component{
     }
   }
 
-  handleClick(event){
-    // console.log("handleClick", event);
+  progress(){
+    var xhr = new XMLHttpRequest();
+    xhr.upload.addEventListener("progress", function(evt){
+      if (evt.lengthComputable) {
+        var percentComplete = evt.loaded / evt.total;
+        console.log(percentComplete);
+      }
+    }, false);
+  }
 
-    var self = this;
+  changeBeat(event) {
+    const field = event.target.name;
+    var beat = this.state.beat;
+    beat[field] = event.target.value;
+
+    this.setState({
+      beat
+    });
+
+    // console.log(this.state.beat)
+  }
+
+  onClick(event){
+    const name = this.state.beat.name
+    const price = this.state.beat.price
+
     if(this.state.filesToBeSent.length > 0){
       var filesArray = this.state.filesToBeSent;
       console.log(filesArray)
       var req = request.post(apiBaseUrl + 'beat');
-        req.field('title', this.nameInput.value)
-        req.field('price', this.priceInput.value)
-      req.attach(filesArray[0][0].name, filesArray[0][0])
+        req.field('title', this.state.beat.title)
+        req.field('price', this.state.beat.price)
+        req.attach(filesArray[0][0].name, filesArray[0][0])
       req.end(function(err,res){
         if(err){
           console.log("error occured")
@@ -49,6 +80,7 @@ class UploadScreen extends Component{
         console.log("res", res);
         alert("File uploading completed")
       })
+      window.location.href = "/";
     }
     else{
       alert("Please upload some files first")
@@ -58,15 +90,29 @@ class UploadScreen extends Component{
   render(){
     return(
       <div>
-        <input type="text" ref={input => {this.nameInput = input; }} />
-        <input type="text" ref={input => {this.priceInput = input; }} />
-        <Dropzone onDrop={(files) => this.onDrop(files)}>
-          <div>Drop File Here</div>
-        </Dropzone>
-        <div>
-          Files to be uploaded are: {this.state.filesPreview}
-        </div>
-        <button onClick={(event) => this.handleClick(event)}>Upload</button>
+        <FormGroup>
+          <Label>Title</Label>
+          <Input type="title" name="title" placeholder="Beat Title" onChange={(event) => this.changeBeat(event)} value={this.state.name}/>
+        </FormGroup>
+        <FormGroup>
+          <Label>Price</Label>
+          <Input type="price" name="price" placeholder="Beat Price" onChange={(event) => this.changeBeat(event)} value={this.state.price} />
+        </FormGroup>
+        <Row>
+          <Col auto>
+            <Dropzone className="dropzone" multiple={false} onDrop={(files) => this.onDrop(files)}>
+              <a>Click to select a beat</a>
+              <p>Or drop a file here to upload</p>
+            </Dropzone>
+          </Col>
+          <Col auto>
+            <div>
+              File to be uploaded is: {this.state.filesPreview}
+            </div>
+          </Col>
+        </Row>
+        <br/>
+        <Button onClick={(event) => this.onClick(event)}type="submit">Upload</Button>
       </div>
     )
   }

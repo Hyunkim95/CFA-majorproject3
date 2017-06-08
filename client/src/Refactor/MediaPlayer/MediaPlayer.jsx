@@ -127,7 +127,7 @@ shrinkPlayer(){
 renderFrequencyBars(graph, analyser, svgWidth, svgHeight) {
     var barPadding = 1;
     var i = 0;
-    var color = "red";
+    var color = "#FA635A";
     var frequencyData = new Uint8Array(133);
     graph.selectAll('rect')
         .data(frequencyData)
