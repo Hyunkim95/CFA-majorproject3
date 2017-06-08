@@ -1,4 +1,4 @@
 {
-  "dbUri": process.env.MONGODB_URI,
+  "dbUri": "mongodb://user:123456@ds113702.mlab.com:13702/beats",
   "jwtSecret": "a secret phrase!!"
 }
