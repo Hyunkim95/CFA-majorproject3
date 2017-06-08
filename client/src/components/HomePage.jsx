@@ -8,7 +8,6 @@ var Loader = require('halogen/RingLoader');
 
 
 const HomePage = ({
-  getStyle,
   filtered_beats,
   searchUpdated,
   current_beat,
@@ -58,9 +57,16 @@ const HomePage = ({
         )
           :
         (
-          <div className="text-align">
-            <Loader style={getStyle} color="#FDCAF3" size="100px" margin="16px"/>
+          <div>
+            <div className="alignit">
+              <Loader
+                color="#FDCAF3"
+                size="100px"
+                margin="16px"/>
+            </div>
+            <h2 style={{color:"#FDCAF3"}}>LOADING</h2>
           </div>
+
         )}
       </Col>
     </Row>

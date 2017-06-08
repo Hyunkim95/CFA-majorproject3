@@ -14,3 +14,10 @@ body{
   margin-bottom: 40px;
   background: #181818;
 }
+
+.alignit{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}

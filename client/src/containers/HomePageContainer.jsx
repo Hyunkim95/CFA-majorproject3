@@ -124,14 +124,6 @@ class HomePageContainer extends React.Component {
     })
   }
 
-  getStyle(){
-    return {
-      display: "flex",
-      alignItems: 'center',
-      justifyContent: 'center'
-    }
-  }
-
     searchUpdated (term) {
     this.setState({searchTerm: term})
     console.log(term)
@@ -143,7 +135,6 @@ class HomePageContainer extends React.Component {
     return (
       <HomePage
         filtered_beats = {Filtered}
-        getStyle = {this.getStyle.bind(this)}
         beats = {this.state.beats}
         searchUpdated = {this.searchUpdated.bind(this)}
         beat = {this.state.beat}

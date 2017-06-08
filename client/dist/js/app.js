@@ -13893,8 +13893,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Loader = __webpack_require__(319);
 
 var HomePage = function HomePage(_ref) {
-  var getStyle = _ref.getStyle,
-      filtered_beats = _ref.filtered_beats,
+  var filtered_beats = _ref.filtered_beats,
       searchUpdated = _ref.searchUpdated,
       current_beat = _ref.current_beat,
       nextBeat = _ref.nextBeat,
@@ -13940,8 +13939,20 @@ var HomePage = function HomePage(_ref) {
           })
         ) : _react2.default.createElement(
           'div',
-          { className: 'text-align' },
-          _react2.default.createElement(Loader, { style: getStyle, color: '#FDCAF3', size: '100px', margin: '16px' })
+          null,
+          _react2.default.createElement(
+            'div',
+            { className: 'alignit' },
+            _react2.default.createElement(Loader, {
+              color: '#FDCAF3',
+              size: '100px',
+              margin: '16px' })
+          ),
+          _react2.default.createElement(
+            'h2',
+            { style: { color: "#FDCAF3" } },
+            'LOADING'
+          )
         )
       )
     )
@@ -14507,15 +14518,6 @@ var HomePageContainer = function (_React$Component) {
       });
     }
   }, {
-    key: 'getStyle',
-    value: function getStyle() {
-      return {
-        display: "flex",
-        alignItems: 'center',
-        justifyContent: 'center'
-      };
-    }
-  }, {
     key: 'searchUpdated',
     value: function searchUpdated(term) {
       this.setState({ searchTerm: term });
@@ -14528,7 +14530,6 @@ var HomePageContainer = function (_React$Component) {
 
       return _react2.default.createElement(_HomePage2.default, {
         filtered_beats: Filtered,
-        getStyle: this.getStyle.bind(this),
         beats: this.state.beats,
         searchUpdated: this.searchUpdated.bind(this),
         beat: this.state.beat,
@@ -15948,7 +15949,7 @@ exports = module.exports = __webpack_require__(23)(undefined);
 
 
 // module
-exports.push([module.i, "body{\n  background: #282828;\n}\n\n.search-input input{\n  width: 300px;\n  height: 50px;\n  border-radius: 5px;\n  font-size: 10pt;\n  float: left;\n  padding-left: 15px;\n  color: white;\n  border: none;\n  margin-bottom: 40px;\n  background: #181818;\n}\n", ""]);
+exports.push([module.i, "body{\n  background: #282828;\n}\n\n.search-input input{\n  width: 300px;\n  height: 50px;\n  border-radius: 5px;\n  font-size: 10pt;\n  float: left;\n  padding-left: 15px;\n  color: white;\n  border: none;\n  margin-bottom: 40px;\n  background: #181818;\n}\n\n.alignit{\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin-bottom: 40px;\n}\n", ""]);
 
 // exports
 
