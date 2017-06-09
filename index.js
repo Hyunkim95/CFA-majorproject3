@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const config = require('./config');
+var cors = require('cors')
+
 
 // connect to the database and load models
 require('./server/models').connect(config.dbUri);
@@ -14,6 +16,8 @@ app.use(express.static('./client/dist/'));
 app.use(bodyParser.urlencoded({ extended: false }));
 // pass the passport middleware
 app.use(passport.initialize());
+
+app.use(cors())
 
 // load passport strategies
 const localSignupStrategy = require('./server/passport/local-signup');

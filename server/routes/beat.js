@@ -40,12 +40,13 @@ router.get('/beats/user/:id/', function(req,res){
 router.post('/beat', function(req, res, next) {
   let form = new formidable.IncomingForm();
 
-  console.log(form)
   form.parse(req, function(err, fields, file) {
 
+    console.log(fields)
 
     if (err) {
       res.sendStatus(400);
+      console.log(err)
       return;
     }
 
@@ -54,10 +55,12 @@ router.post('/beat', function(req, res, next) {
       fs.readFile(infoJSON.path, function(err, data) {
         if (err) {
           res.sendStatus(400);
+          console.log(err)
           return;
         }
         if (data.length === 0) {
           res.sendStatus(400);
+          console.log("0")
           return;
         }
         console.log(data.length)
