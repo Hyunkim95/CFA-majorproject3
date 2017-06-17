@@ -55,7 +55,7 @@ class Sale extends React.Component {
   }
 
   purchase(){
-    const URL = "https://beat-profile.herokuapp.com/api/beats/"
+    const URL = "http://localhost:3000/api/beats/"
     var beat_id = this.props.beat._id
     var purchaser_id = this.state.user._id
 

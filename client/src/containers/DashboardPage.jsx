@@ -49,7 +49,7 @@ class DashboardPage extends React.Component {
   getBeats(){
     console.log('componentDidMount')
     const USERID = this.state.user._id
-    const URL = 'https://beat-profile.herokuapp.com/api/beats/user/'
+    const URL = 'http://localhost:3000/api/beats/user/'
     axios.get(URL + USERID + '/')
       .then((response) => { //need to escape the context another option is to use bind
         this.setState({personal_beats: response.data})

@@ -3,7 +3,7 @@ import UploadForm from './UploadForm.css'
 import React, { Component } from 'react';
 import { Button, Row, Col, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 var request = require('superagent');
-var apiBaseUrl = "https://beat-profile.herokuapp.com/api/";
+var apiBaseUrl = "http://localhost:3000/api/";
 
 
 class UploadScreen extends Component{
@@ -16,7 +16,9 @@ class UploadScreen extends Component{
       },
       filesToBeSent:[],
       filesPreview:[],
-      printcount: 2
+      printcount: 2,
+      upload_progress: 0,
+      upload_total:0
     }
 
     this.changeBeat.bind(this);
@@ -38,16 +40,6 @@ class UploadScreen extends Component{
     else{
       alert("You can only upload one file at a time")
     }
-  }
-
-  progress(){
-    var xhr = new XMLHttpRequest();
-    xhr.upload.addEventListener("progress", function(evt){
-      if (evt.lengthComputable) {
-        var percentComplete = evt.loaded / evt.total;
-        console.log(percentComplete);
-      }
-    }, false);
   }
 
   changeBeat(event) {
@@ -73,6 +65,9 @@ class UploadScreen extends Component{
         req.field('title', this.state.beat.title)
         req.field('price', this.state.beat.price)
         req.attach(filesArray[0][0].name, filesArray[0][0])
+        .on('progress', function(e){
+           console.log(e.direction,"is done",e.percent,"%");
+        })
       req.end(function(err,res){
         if(err){
           console.log("error occured")

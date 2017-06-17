@@ -13,7 +13,7 @@ class AudioElement extends React.Component {
 
     render() {
         return (
-          <audio style={this.getStyles()} id={this.props.beat_id} src={"https://beat-profile.herokuapp.com/api/beats/" + this.props.beat_id} ></audio>
+          <audio style={this.getStyles()} id={this.props.beat_id} src={"http://localhost:3000/api/beats/" + this.props.beat_id} ></audio>
         )
     }
 }

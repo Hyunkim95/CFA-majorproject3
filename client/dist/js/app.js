@@ -13748,7 +13748,7 @@ var AudioElement = function (_React$Component) {
     }, {
         key: "render",
         value: function render() {
-            return _react2.default.createElement("audio", { style: this.getStyles(), id: this.props.beat_id, src: "https://beat-profile.herokuapp.com/api/beats/" + this.props.beat_id });
+            return _react2.default.createElement("audio", { style: this.getStyles(), id: this.props.beat_id, src: "http://localhost:3000/api/beats/" + this.props.beat_id });
         }
     }]);
 
@@ -15073,7 +15073,7 @@ var PurchasedBeats = function PurchasedBeats(_ref) {
           _react2.default.createElement(
             'audio',
             null,
-            _react2.default.createElement('source', { src: 'https://beat-profile.herokuapp.com/api/beats/' + beat._id })
+            _react2.default.createElement('source', { src: 'http://localhost:3000/api/beats/' + beat._id })
           ),
           _react2.default.createElement(
             _reactstrap.Button,
@@ -15124,7 +15124,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var request = __webpack_require__(316);
-var apiBaseUrl = "https://beat-profile.herokuapp.com/api/";
+var apiBaseUrl = "http://localhost:3000/api/";
 
 var UploadScreen = function (_Component) {
   _inherits(UploadScreen, _Component);
@@ -15141,7 +15141,9 @@ var UploadScreen = function (_Component) {
       },
       filesToBeSent: [],
       filesPreview: [],
-      printcount: 2
+      printcount: 2,
+      upload_progress: 0,
+      upload_total: 0
     };
 
     _this.changeBeat.bind(_this);
@@ -15168,17 +15170,6 @@ var UploadScreen = function (_Component) {
       }
     }
   }, {
-    key: 'progress',
-    value: function progress() {
-      var xhr = new XMLHttpRequest();
-      xhr.upload.addEventListener("progress", function (evt) {
-        if (evt.lengthComputable) {
-          var percentComplete = evt.loaded / evt.total;
-          console.log(percentComplete);
-        }
-      }, false);
-    }
-  }, {
     key: 'changeBeat',
     value: function changeBeat(event) {
       var field = event.target.name;
@@ -15203,7 +15194,9 @@ var UploadScreen = function (_Component) {
         var req = request.post(apiBaseUrl + 'beat');
         req.field('title', this.state.beat.title);
         req.field('price', this.state.beat.price);
-        req.attach(filesArray[0][0].name, filesArray[0][0]);
+        req.attach(filesArray[0][0].name, filesArray[0][0]).on('progress', function (e) {
+          console.log(e.direction, "is done", e.percent, "%");
+        });
         req.end(function (err, res) {
           if (err) {
             console.log("error occured");
@@ -15883,7 +15876,7 @@ var Sale = function (_React$Component) {
   }, {
     key: 'purchase',
     value: function purchase() {
-      var URL = "https://beat-profile.herokuapp.com/api/beats/";
+      var URL = "http://localhost:3000/api/beats/";
       var beat_id = this.props.beat._id;
       var purchaser_id = this.state.user._id;
 
@@ -16147,7 +16140,7 @@ var DashboardPage = function (_React$Component) {
 
       console.log('componentDidMount');
       var USERID = this.state.user._id;
-      var URL = 'https://beat-profile.herokuapp.com/api/beats/user/';
+      var URL = 'http://localhost:3000/api/beats/user/';
       axios.get(URL + USERID + '/').then(function (response) {
         //need to escape the context another option is to use bind
         _this3.setState({ personal_beats: response.data });
@@ -16264,7 +16257,7 @@ var HomePageContainer = function (_React$Component) {
       var _this2 = this;
 
       console.log('componentDidMount');
-      var URL = 'https://beat-profile.herokuapp.com/api/beats';
+      var URL = 'http://localhost:3000/api/beats';
       axios.get(URL).then(function (response) {
         //need to escape the context another option is to use bind
         _this2.setState({ beats: response.data });

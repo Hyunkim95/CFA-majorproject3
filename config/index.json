@@ -1,4 +1,4 @@
 {
-  "dbUri": "mongodb://user:123456@ds113702.mlab.com:13702/beats",
+  "dbUri": "mongodb://localhost/major_project",
   "jwtSecret": "a secret phrase!!"
 }
