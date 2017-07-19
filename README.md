@@ -9,3 +9,5 @@ One of the client’s work was featured on a viral youtube video which had over 
 Solution: The solution was to create an application that would represent the client’s brand - the application main purpose is to showcase the client’s work.  The client should be able to upload his work directly through the client side and be accessible by the public through the application.  Furthermore, users who are interested to purchase the client’s work should be able to purchase directly through the application. 
 
 Due the nature of the client’s occupation and saturation of the market, the client required a way to distinguish himself from his competitor. Our solution was to embed a media player with visuals that match his branding of “Blade Runner”. 
+
+<img src="http://i.imgur.com/Oc5EMNl.png" >
