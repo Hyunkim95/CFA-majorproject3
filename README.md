@@ -11,3 +11,5 @@ Solution: The solution was to create an application that would represent the cli
 Due the nature of the client’s occupation and saturation of the market, the client required a way to distinguish himself from his competitor. Our solution was to embed a media player with visuals that match his branding of “Blade Runner”. 
 
 <img src="http://i.imgur.com/Oc5EMNl.png" >
+
+[embed]https://www.docdroid.net/Vusj28t/cfa.pdf[/embed]
