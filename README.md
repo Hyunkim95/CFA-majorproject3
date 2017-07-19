@@ -23,7 +23,7 @@ The database used MLab.
 
 ## Wireframes for at least 5 screens
 
-<img src="http://i.imgur.com/dO2kMcu.png" >
+<img src="http://i.imgur.com/OFcSW3G.png" >
 
 ## User stories for the whole application
 
