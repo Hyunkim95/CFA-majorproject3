@@ -1,3 +1,54 @@
+# Client Interaction 
+
+## Record all interactions with your client in a diary format
+
+<i>30/5/2017</i>
+I met the client in evening and discussed the problems he was facing as a music producer. The interaction was heavily skewed on enquiring and deconstructing the problem my client was facing. Both parties pitched our solutions and analysed the advantages and disadvantages of the solution. At the end of the interaction, we came to a conclusion on the ideal solution.
+
+<i>2/6/2017</i>
+With a basic understanding of the needs of the client, this interaction focused more on the project scope - we began by developing user stories to understand the basic necessities of the project. After detailing the user stories, we narrowed the stories down to it’s basic features (MVP features). This interaction focused on the outlining the differences between the features that are required and features that are desired; furthermore expectation handling was done within this interaction.
+
+<i>7/6/2017</i>
+A basic functional prototype was presented to the client, client was overall satisfied with the functionality however had some issues with the styling of the application. This interaction focused on the review process of the client interaction. All the changes were made and reviewed through messaging applications after this interaction.
+
+<i>12/6/2017</i>
+The final project made to the needs of the client was presented, within this interaction IT support plans and maintenance documents were handed to the client. Furthermore, a questionnaire was given to review the work done by myself.
+
+## Plan information gathering activities to determine project requirements, constraints and risks
+
+Project requirements:
+- Uploading Files to a node server
+- Accessing files through API calls in react User Authentication through node and react
+- Uploading Files to a Node Server
+
+## Project Requirements
+
+The project requires the client to be able to upload music files (WAV and MP3) files from react to the node server. The process involves an upload form on the client side which appends the uploaded file to the URI (Using SuperAgent), on the server side the application needs to access the appended file and convert the file into a Buffer to store it in the mongoose database.
+
+<b>Accessing Files Through API calls in REACT</b>
+
+Project Requirements
+
+The project requires the customers to be able to access the MP3/WAV files from the node server in the react client. Customers should be able to listen to the music before purchasing. The client side will be doing a GET call to access all the beats that are available for sale, whenever a new beat is submitted through the client side - a POST request is made to the server.
+
+Constraints
+
+As the client needs to receive all the files from the server side, it will take a long time for it receive all the necessary information. A streaming method needs to be considered however for this project a basic functionality of the application will be prioritised.
+
+<b> User Authentication through NODE and REACT </b>
+
+Project Requirements
+
+Users are able to sign up and login through the REACT client, there are two types of users: 
+- Clients: When the client logs in, the client is given authority to upload beat files and access the admin dashboard which contains data about recent transactions.
+- Customers: When customers sign up and login, the customers are given authority to purchase beat files and the rights to download the file.
+
+The client and server authentication methods will be set using passport and JWT.
+
+Risk
+
+Without a proper authentication method set up, customers may be able to access the beats using curl methods.
+
 # Application Design
 
 ## One page summary of your application including problem definition and solution
