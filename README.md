@@ -19,7 +19,11 @@ The database used MLab.
 
 ## A workflow diagram of the user journey
 
+<img src="http://i.imgur.com/dO2kMcu.png" >
+
 ## Wireframes for at least 5 screens
+
+<img src="http://i.imgur.com/dO2kMcu.png" >
 
 ## User stories for the whole application
 
@@ -31,8 +35,14 @@ As an admin, I want to be able to upload media files directly through the client
 
 ## Entity Relationship Diagram 
 
+<img src="http://i.imgur.com/FWiRN6o.png" >
+
 # Tools and Methodologies 
 
 ## Trello or similar project management tools to be used to track progress of build
 
+<img src="http://i.imgur.com/dO2kMcu.png" >
+
 ## Code review. Demonstrate that you have had your code reviewed by other students and that you have provided a code review for others
+
+<img src="http://i.imgur.com/kvZrSx1.png" >
