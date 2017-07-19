@@ -12,4 +12,4 @@ Due the nature of the client’s occupation and saturation of the market, the cl
 
 <img src="http://i.imgur.com/Oc5EMNl.png" >
 
-[embed]https://www.docdroid.net/Vusj28t/cfa.pdf[/embed]
+<embed>https://www.docdroid.net/Vusj28t/cfa.pdf</embed>
